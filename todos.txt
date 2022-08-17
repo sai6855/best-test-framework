@@ -1,1 +1,2 @@
 impement not
+implemente expect(() => compileAndroidCode()).toThrow(/JDK/); in toThrow

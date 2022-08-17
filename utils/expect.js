@@ -21,6 +21,32 @@ const expect = (received) => {
       }
       return true;
     };
+
+    this.toThrow = function(expected) {
+      let isErrorThrown = false;
+      let errorMessage;
+      try {
+        received();
+      } catch (error) {
+        isErrorThrown = true;
+        errorMessage = error.message;
+      }
+
+      let additionalCheck =
+        typeof expected === "string" ? errorMessage === expected : true;
+
+      if (isErrorThrown && additionalCheck) {
+        return true;
+      }
+
+      let message = "error";
+
+      if (typeof expected === "string") {
+        message = `${expected} ${message}`;
+      }
+
+      throw new Error(`Expected ${received} to throw ${message}`);
+    };
   }
 
   return new Methods();
