@@ -1,6 +1,5 @@
 function trackcount(func) {
-  this.count = (this.count || 0) + 1;
-  func.__proto__.count = this.count;
+  func.__proto__.count = func.count + 1;
   return func;
 }
 
