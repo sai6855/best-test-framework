@@ -4,7 +4,6 @@ function drinkAll(callback, flavour) {
   }
 }
 
-const jest = new Jest();
 const drink = jest.fn((flavour) => console.log(flavour));
-drinkAll(drink, "lemon");
-expect(drink, jest).toHaveBeenCalled();
+drinkAll(drink, "octopus");
+expect(drink).toHaveBeenCalled();

@@ -1,4 +1,4 @@
-const expect = (received, jest) => {
+const expect = (received) => {
   function Methods() {
     this.toBe = function(expected) {
       if (received !== expected) {
@@ -49,7 +49,7 @@ const expect = (received, jest) => {
     };
 
     this.toHaveBeenCalled = function() {
-      if (jest.count === 0) {
+      if (received.count === 0) {
         throw new Error(`Expected ${received} to get called atleast once`);
       }
 

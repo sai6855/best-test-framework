@@ -1,6 +1,6 @@
 const fs = require("fs");
 const expect = require("./utils/expect");
-const Jest = require("./utils/jest");
+const jest = require("./utils/jest");
 
 const runTest = async (file) => {
   const code = await fs.promises.readFile(file, "utf8");

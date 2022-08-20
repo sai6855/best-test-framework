@@ -1,12 +1,14 @@
 function trackcount(func) {
-  this.count += 1;
+  this.count = (this.count || 0) + 1;
+  func.__proto__.count = this.count;
   return func;
 }
-function Jest() {
-  this.count = 0;
-  this.fn = function(func) {
-    return trackcount.bind(this, func);
-  };
-}
 
-module.exports = Jest;
+const jest = {
+  fn: function(func) {
+    func.__proto__.count = 0;
+    return trackcount.bind(this, func);
+  },
+};
+
+module.exports = jest;
